@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashBoardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +30,12 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'viewDash'])->name('dashboard');
-});
+
+// Route::get('/category', function () {
+//     return view('admin.category.category');
+// })->name('AllCat');
+
+// Category routes
+Route::get('/all/category', [CategoryController::class,'viewCategory'])->name('AllCat');
+Route::get('/addCategory', [CategoryController::class,'createCategoryPage'])->name('addCategory');
+Route::post('addCategory', [CategoryController::class,'addCategory'])->name('storeCategory');
