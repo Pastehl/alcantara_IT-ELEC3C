@@ -17,14 +17,15 @@
 
         <div class="container">
     <h2>Create a New Category</h2>
-    <form action="{{ route('storeCategory') }}" method="POST">
+    <form action="{{ route('deleteCategory') }}" method="POST">
     @csrf  
 
         <div class="form-group">
             <label for="category_name">Category Name</label>
             <input type="text" class="form-control" id="category_name" name="category_name" placeholder="Enter category name" required>
         </div>
-        <button type="submit" class="btn btn-primary">Create Category</button>
+
+        <button type="submit" class="btn btn-primary">Delete Category</button>
     </form>
 </div>
     </x-slot>

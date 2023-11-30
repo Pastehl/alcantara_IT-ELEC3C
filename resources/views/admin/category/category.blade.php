@@ -60,7 +60,7 @@
                         <th>ID</th>
                         <th>Created At</th>
                         <th>Updated At</th>
-                        <th>Deleted At</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,7 +70,41 @@
                             <td>{{ $category->user_id }}</td>
                             <td>{{ $category->created_at }}</td>
                             <td>{{ $category->updated_at }}</td>
-                            <td>{{ $category->deleted_at }}</td>
+                            <td><a href="{{ route('editCategory', ['categoryId' => $category->id]) }}" class="btn btn-secondary">Update</a> 
+                            <a href="{{ route('RemoveCat', ['categoryId' => $category->id])  }}" class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <div class="container">
+            <div class = "row justify-content-between">
+            <div class="col-auto">
+                <h1>Soft Delete</h1>
+            </div>
+            <div class="col-auto">
+                
+            </div>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User ID</th>
+                        <th>Category Name</th>
+                        <th>Deleted At</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($trashes as $trash)
+                        <tr>
+                            <td>{{ $trash->id }}</td>
+                            <td>{{ $trash->user_id }}</td>
+                            <td>{{ $trash->category_name }}</td>
+                            <td>{{ $trash->deleted_at }}</td>
+                            <td><a href="{{ route('RestoreCat', ['categoryId' => $trash->id]) }}" class="btn btn-secondary">Restore</a> 
+                            <a href="{{ route('DeleteCat', ['categoryId' => $trash->id]) }}" class="btn btn-danger">Delete</a></td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -16,16 +16,15 @@
         <h1>Hello.... {{ auth()->user()->name }}</h1>
 
         <div class="container">
-    <h2>Create a New Category</h2>
-    <form action="{{ route('storeCategory') }}" method="POST">
-    @csrf  
-
-        <div class="form-group">
-            <label for="category_name">Category Name</label>
-            <input type="text" class="form-control" id="category_name" name="category_name" placeholder="Enter category name" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Create Category</button>
-    </form>
+    <h2>Create a New Category</h2> 
+        <form method="POST" action="{{ route('updateCategory', $category->id) }}">
+            @csrf            
+            <label for="category_name">Category Name:</label>
+            <input type="text" id="category_name" name="category_name" value="{{$category->category_name }}">
+            
+            <button type="submit" class = "btn btn-primary">Update</button>
+        </form>
 </div>
+
     </x-slot>
 </x-app-layout>
